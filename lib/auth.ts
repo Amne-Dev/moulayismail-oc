@@ -16,6 +16,8 @@ export const authOptions = {
   },
   pages: {
     signIn: '/auth/login',
+    error: '/auth/login',
+    newUser: '/auth/register' // Optional
   },
 }
 
