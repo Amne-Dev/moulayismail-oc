@@ -17,25 +17,26 @@ export default function HomePage() {
   }
 
   return (
-    <div className="login-page">
-      {/* Main Card */}
-      <div className="login-card">
-        <div className="text-center logo-container">
-          <img 
-            src="/images/logo.png" 
-            alt="Logo" 
-            className="mb-3"
-            style={{ width: '20vh', height: 'auto' }}
-          />
-          <p>Moulay Ismail High School</p>
-          <h1 className="login-title">
-            {language === 'en' 
-              ? 'Online Community of Teachers and Students'
-              : 'مجتمع تعليمي للمعلمين والطلاب عبر الإنترنت'}
-          </h1>
-        </div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Header Section */}
+      <header style={{ textAlign: 'center', padding: '2rem', backgroundColor: '#f5f5f5' }}>
+        <img 
+          src="/images/logo.png" 
+          alt="Logo" 
+          style={{ width: '150px', height: 'auto', marginBottom: '1rem' }}
+        />
+        <p style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Moulay Ismail High School</p>
+        <h1 style={{ fontSize: '1.5rem', color: '#333' }}>
+          {language === 'en' 
+            ? 'Online Community of Teachers and Students'
+            : 'مجتمع تعليمي للمعلمين والطلاب عبر الإنترنت'}
+        </h1>
+      </header>
+
+      {/* Main Content */}
+      <main style={{ flex: 1, padding: '2rem' }}>
         <Carousel />
-      </div>
+      </main>
 
       {/* Sidebar */}
       <Sidebar
