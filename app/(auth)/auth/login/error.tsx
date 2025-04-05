@@ -16,22 +16,31 @@ export default function ErrorPage() {
   }, [error, router])
 
   return (
-    <div className="container text-center mt-5">
-      <h2 className="text-danger mb-4">Authentication Error</h2>
-      <p className="lead">
-        {error === 'OAuthAccountNotLinked' && 
-          'Please sign in with the same account you used originally.'}
-        {error === 'AccessDenied' && 
-          'You do not have permission to access this resource.'}
-        {error === 'OAuthCallback' && 
-          'Error during authentication. Please try again.'}
-      </p>
-      <button 
-        onClick={() => router.push('/auth/login')}
-        className="btn btn-primary mt-3"
-      >
-        Return to Login
-      </button>
+    <div className="login-page">
+      {/* Main Card */}
+      <div className="login-card">
+        {/* Title */}
+        <h1 className="login-title">Authentication Error</h1>
+
+        {/* Error Message */}
+        <p className="lead" style={{ color: 'var(--text-sec)', marginBottom: '1.5rem' }}>
+          {error === 'OAuthAccountNotLinked' &&
+            'Please sign in with the same account you used originally.'}
+          {error === 'AccessDenied' &&
+            'You do not have permission to access this resource.'}
+          {error === 'OAuthCallback' &&
+            'Error during authentication. Please try again.'}
+          {!error && 'An unknown error occurred. Please try again.'}
+        </p>
+
+        {/* Return to Login Button */}
+        <button
+          onClick={() => router.push('/auth/login')}
+          className="btn btn-credentials"
+        >
+          Return to Login
+        </button>
+      </div>
     </div>
   )
 }

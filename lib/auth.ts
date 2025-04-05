@@ -11,20 +11,19 @@ export const authOptions = {
           prompt: "consent",
           access_type: "offline",
           response_type: "code",
-          redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/google`
-        }
-      }
-    })
+        },
+      },
+    }),
   ],
   callbacks: {
     async session({ session, token }: any) {
-      session.user.role = token.role
-      return session
+      session.user.role = token.role;
+      return session;
     },
   },
   pages: {
-    signIn: '/auth/login',
-    error: '/auth/login'
+    signIn: '/auth/login', // Custom login page
+    error: '/auth/error', // Custom error page
   },
   secret: process.env.NEXTAUTH_SECRET,
-}
+};
