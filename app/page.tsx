@@ -17,26 +17,27 @@ export default function HomePage() {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-9 offset-md-0">
-          <div className="text-center mt-5 logo">
-            <img 
-              src="/images/logo.png" 
-              alt="Logo" 
-              className="mb-3"
-              style={{ width: '20vh', height: 'auto' }}
-            />
-            <p>Moulay Ismail High School</p>
-            <h1 style={{ color: '#854442' }}>
-              {language === 'en' 
-                ? 'Online Community of Teachers and Students'
-                : 'مجتمع تعليمي للمعلمين والطلاب عبر الإنترنت'}
-            </h1>
-          </div>
-          <Carousel />
+    <div className="login-page">
+      {/* Main Card */}
+      <div className="login-card">
+        <div className="text-center logo-container">
+          <img 
+            src="/images/logo.png" 
+            alt="Logo" 
+            className="mb-3"
+            style={{ width: '20vh', height: 'auto' }}
+          />
+          <p>Moulay Ismail High School</p>
+          <h1 className="login-title">
+            {language === 'en' 
+              ? 'Online Community of Teachers and Students'
+              : 'مجتمع تعليمي للمعلمين والطلاب عبر الإنترنت'}
+          </h1>
         </div>
+        <Carousel />
       </div>
+
+      {/* Sidebar */}
       <Sidebar
         session={session}
         language={language}
