@@ -1,26 +1,195 @@
-@import "tailwindcss";
-
+/* app/styles/globals.css */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color Scheme */
+  --bg-main: #fff4e6;
+  --bg-sec: #2F3645;
+  --text-main: #2F3645;
+  --text-sec: #E6B9A6;
+  --misc: #854442;
+  --misc-sec: #a82621;
+
+  /* Spacing */
+  --sidebar-width: 30vh;
+  --mobile-sidebar-width: 100%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base Styles */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Sidebar Styles */
+.sidebar {
+  background-color: var(--bg-sec);
+  width: var(--sidebar-width);
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh 0;
+  transition: right 0.3s ease;
+  z-index: 15;
+}
+
+.sidebar button {
+  background-color: var(--misc);
+  color: #ffffff;
+  border: none;
+  padding: 2vh 4vh;
+  margin: 1.5vh 0;
+  font-size: 2vh;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 75%;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+  background-color: var(--misc-sec);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--misc);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--misc-sec);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background-color: var(--misc-sec);
+  border: none;
+  color: white;
+}
+
+/* Carousel Styles */
+.carousel-inner img {
+  height: 50vh;
+  width: 120vw;
+  object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  filter: drop-shadow(0 0 0.75rem rgba(0,0,0,1));
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1vh 2vh;
+  border-radius: 5px;
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--bg-sec);
+  color: var(--text-sec);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Login Page Specific */
+.login-card {
+  background-color: var(--bg-sec);
+  border: none;
+  color: var(--text-sec);
+}
+
+.dropdown-menu {
+  background-color: var(--misc);
+  border: none;
+}
+
+.dropdown-item {
+  color: white !important;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--misc-sec) !important;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 1vh;
+  right: 1vh;
+  z-index: 20;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  width: 3vh;
+  height: 0.4vh;
+  background-color: var(--bg-sec);
+  display: block;
+  margin: 0.6vh 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger-icon.cross {
+  background-color: var(--misc);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: var(--mobile-sidebar-width);
+    right: -100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1vh 0;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .carousel-inner img {
+    height: 55vh;
+  }
+
+  .sidebar button {
+    font-size: 1.5vh;
+    padding: 1.5vh 3vh;
+    width: auto;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 480px) {
+  .sidebar button {
+    font-size: 1.2vh;
+    padding: 1vh 2vh;
+  }
+  
+  .carousel-inner img {
+    height: 55vh;
+  }
 }
